@@ -1,5 +1,5 @@
 #gnu makefile
-# This Makefile provides macro control of the Reaction Platform microservice
+# This Makefile provides macro control of the MOC Platform microservice
 # ecosystem. It performs tasks like:
 #
 #   * Verify dependencies are present

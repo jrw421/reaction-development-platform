@@ -1,6 +1,6 @@
 ## Overview
 
-Reaction Platform is a customizable, real-time, reactive commerce solution. This repository is the quickest way to get started with the [Reaction API][10] and its supporting services in a local development environment.
+Mailchimp Open Commerce Platform is a customizable, real-time, reactive commerce solution. This repository is the quickest way to get started with the [Mailchimp Open Commerce API][10] and its supporting services in a local development environment.
 
 ## Features
 
@@ -22,11 +22,11 @@ Reaction Platform is a customizable, real-time, reactive commerce solution. This
 
 ## Getting started
 
-Clone this repository, and then run `make` in the `reaction-development-platform` directory. If all goes well, it will take some time to download and start all of the components, but when it's done you'll have the entire Reaction application running on your computer through Docker. Individual services are cloned as child directories within this project.
+Clone this repository, and then run `make` in the `development-platform` directory. If all goes well, it will take some time to download and start all of the components, but when it's done you'll have the entire Mailchimp Open Commerce application running on your computer through Docker. Individual services are cloned as child directories within this project.
 
 ```sh
-git clone git@github.com:reactioncommerce/reaction-development-platform.git
-cd reaction-development-platform
+git clone git@github.com:mailchimp-open-commerce/development-platform.git
+cd development-platform
 make
 ```
 
@@ -42,10 +42,10 @@ These services will be running when the initial `make` command is complete:
 | Service                                             | Description                                                                                                                                                                                         |
 |-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [OAuth2 Server (Hydra)][12] (http://localhost:4444) | [ORY Hydra][11] OAuth2 token server.                                                                                                                                                                |
-| [Reaction Identity][17] (http://localhost:4100)     | The OAuth2-compatible user interface for Reaction Identity, such as login and registration.                                                                                                         |
-| [Reaction API][10] (http://localhost:3000)          | The Reaction API, which includes [a GraphQL endpoint](http://localhost:3000/graphql). See [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/features/graphql-playground/). |
-| [Reaction Admin][19] (http://localhost:4080)        | A user interface for administrators and shop managers to configure shops, manage products, and process orders.                                                                                      |
-| [Example Storefront][13] (http://localhost:4000)    | An example Reaction storefront UI built with [Next.JS](https://github.com/zeit/next.js/).                                                                                                           |
+| [Identity][17] (http://localhost:4100)     | The OAuth2-compatible user interface for Identity, such as login and registration.                                                                                                         |
+| [api-server][10] (http://localhost:3000)          | The api-server, which includes [a GraphQL endpoint](http://localhost:3000/graphql). See [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/features/graphql-playground/). |
+| [Admin][19] (http://localhost:4080)        | A user interface for administrators and shop managers to configure shops, manage products, and process orders.                                                                                      |
+| [Example Storefront][13] (http://localhost:4000)    | An example Mailchimp Open Commerce storefront UI built with [Next.JS](https://github.com/zeit/next.js/).                                                                                                           |
 
 If the `make` command fails at some point, you can run or rerun it for specific services with:
 
@@ -61,13 +61,13 @@ make init-example-storefront
 
 ## Project Commands
 
-These are the available `make` commands in the `reaction-platform` root directory.
+These are the available `make` commands in the `development-platform` root directory.
 
 | Command                                                 | Description                                                                                                                                                                    |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `make`                                                  | Bootstraps the entire Reaction development environment in Docker. Projects will use production Docker images and code.                                                         |
+| `make`                                                  | Bootstraps the entire Mailchimp Open Commerce development environment in Docker. Projects will use production Docker images and code.                                                         |
 | `make init-<project-name>`                              | Example: `make init-example-storefront`. Does clone/setup for a single project.                                                                                                |
-| `make init-dev`                                         | Bootstraps the entire Reaction development environment in Docker. Projects will use development configuration.                                                                 |
+| `make init-dev`                                         | Bootstraps the entire Mailchimp Open Commerce development environment in Docker. Projects will use development configuration.                                                                 |
 | `make init-dev-<project-name>`                          | Example: `make init-dev-example-storefront`. Does clone/setup for a single project and configures it with a development configuration.                                         |
 | `make stop`                                             | Stops all containers.                                                                                                                                                          |
 | `make stop-<project-name>`                              | Example: `make stop-example-storefront`. Stops all containers for a single project.                                                                                            |
@@ -89,28 +89,28 @@ These are the available `make` commands in the `reaction-platform` root director
 
 ## Customizing Configuration
 
-The development platform runs the latest version of Reaction by default, but
+The development platform runs the latest version of Mailchimp Open Commerce by default, but
 it's possible to select a specific version, or to customize an existing release
 version.
 
 ### How Configuration Works
 
-The Reaction development platform uses `make` to run tasks. `make` is aware of
+The Mailchimp Open Commerce development platform uses `make` to run tasks. `make` is aware of
 the task dependency tree and ensures that all required dependencies are met
 when running a task.  The main tasks and functionality for `make` are
 configured in `Makefile`.
 
 Configurations that may change are extracted into `config.mk`. This file is
 checked in to source control and should not be modified. It is always configured
-for the latest Reaction release.
+for the latest Mailchimp Open Commerce release.
 
 If a file named `config.local.mk` exists then it will be loaded after
 `config.mk`. Settings in `config.local.mk` will override those set in
 `config.mk`. It is ignored by source control.
 
-### Running a Specific Reaction Release Version
+### Running a Specific Mailchimp Open Commerce Release Version
 
-Configurations for specific Reaction releases (since v3.0.0) are located in
+Configurations for specific Mailchimp Open Commerce releases (since v3.0.0) are located in
 `config/reaction-oss`. You may symlink or copy any release configuration to
 `config.local.mk`.
 
@@ -123,7 +123,7 @@ make
 
 ### Running A Customized Installation
 
-You may customize your Reaction installation by modifying `config.local.mk`.
+You may customize your Mailchimp Open Commerce installation by modifying `config.local.mk`.
 It's easiest to start with an existing release configuration file and modify it
 as needed. In this way you can:
 
@@ -158,7 +158,7 @@ make
 
 ### Updating Local Branches to Match Config
 
-If you are using the Reaction development platform for development, then you
+If you are using the Mailchimp Open Commerce development platform for development, then you
 will need to update your local branch to get the latest at some point. The
 `update-checkouts` command will perform this operation.
 
@@ -171,7 +171,7 @@ git before doing anything. You may commit, stash or drop those changes.
 
 ## Running Particular Git Branches
 
-After you've done the "Getting Started" steps and have the latest Reaction system running, you may need to switch to and run a certain branch/tag in one or more of the sub-projects.
+After you've done the "Getting Started" steps and have the latest Mailchimp Open Commerce system running, you may need to switch to and run a certain branch/tag in one or more of the sub-projects.
 
 To check out and run a certain branch or tag for a project, stop the project, run `make checkout-<project-name> <git-tag-or-branch-name>`, and then init the project again.
 
@@ -187,7 +187,7 @@ If you're getting unexpected results, `cd` into the sub-project directory and do
 
 ### Running From Code For Development
 
-To ensure they start quickly, all Reaction projects are configured (in their `docker-compose.yml` file) to run from the latest published Docker image. This means that if you change code files, you will not see your changes reflected in the running application.
+To ensure they start quickly, all Mailchimp Open Commerce projects are configured (in their `docker-compose.yml` file) to run from the latest published Docker image. This means that if you change code files, you will not see your changes reflected in the running application.
 
 ##### To install the whole platform in development mode:
 
@@ -217,7 +217,7 @@ If you run into trouble with the above command, run `make clean-<project-name>` 
 
 ## Networked Services
 
-User-defined Docker networks are used to connect the Reaction services that run
+User-defined Docker networks are used to connect the Mailchimp Open Commerce services that run
 as separate Docker Compose projects. With this configuration, each of the
 projects can be launched independently using Docker Compose.
 
@@ -229,9 +229,9 @@ running.
 
 ### Network Naming Strategy
 
-All projects must list `reaction.localhost` as an external network in their docker-compose configuration. The `make` commands will ensure that this network exists. Choose a unique enough name for your service that you can be reasonably sure it won't conflict with another Reaction service.
+All projects must list `opencommerce.localhost` as an external network in their docker-compose configuration. The `make` commands will ensure that this network exists. Choose a unique enough name for your service that you can be reasonably sure it won't conflict with another Mailchimp Open Commerce service.
 
-When you need to communicate with one service from another over the internal Docker network, use `<service-name>.reaction.localhost` as the hostname.
+When you need to communicate with one service from another over the internal Docker network, use `<service-name>.opencommerce.localhost` as the hostname.
 
 ## Documentation
 
@@ -239,10 +239,10 @@ You may refer to each sub-project's README for additional operation details.
 
 | Sub-project                | Description           | Documentation                                                          |
 | -------------------------- | ----------------------|----------------------------------------------------------------------- |
-| [`reaction`][10]           | GraphQL API           | [Reaction API Documentation][14]                                       |
-| [`reaction-hydra`][12]     | Authentication server | [Reaction Hydra Readme][16], [Ory Hydra docs][11]                         |
-| [`reaction-identity`][17]  | Identity service      | [Reaction Identity Readme][18]                                         |
-| [`reaction-admin`][19]     | Classic Admin UI      | [Reaction Admin Readme][20]                                            |
+| [`api-server`][10]           | GraphQL API           | [api-server Documentation][14]                                       |
+| [`hydra`][12]     | Authentication server | [Hydra Readme][16], [Ory Hydra docs][11]                         |
+| [`identity`][17]  | Identity service      | [Identity Readme][18]                                         |
+| [`admin`][19]     | Classic Admin UI      | [Admin Readme][20]                                            |
 | [`example-storefront`][13] | Example Storefront    | [Example Storefront docs][15]                                          |
 
 For tips on developing with Docker, read our [Docker docs](https://docs.reactioncommerce.com/docs/installation-docker-development).
@@ -253,16 +253,16 @@ The following table provides the most current version of each project used by th
 
 | Project                             | Latest release / tag                                                                                |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------|
-| [reaction-development-platform][10] | [`3.11.1`](https://github.com/reactioncommerce/reaction-development-platform/tree/v3.11.1)            |
-| [reaction][10]                      | [`3.11.1`](https://github.com/reactioncommerce/reaction/tree/v3.11.1)                                 |
-| [reaction-hydra][12]                | [`3.0.0`](https://github.com/reactioncommerce/reaction-hydra/tree/v3.0.0)                           |
-| [reaction-identity][17]             | [`3.3.0`](https://github.com/reactioncommerce/reaction-identity/tree/v3.3.0)                        |
-| [example-storefront][13]            | [`4.0.0`](https://github.com/reactioncommerce/example-storefront/tree/v4.0.0)                       |
-| [reaction-admin (beta)][19]         | [`3.0.0-beta.12`](https://github.com/reactioncommerce/reaction-admin/tree/v3.0.0-beta.12)             |
-| [api-migrations][20]                | [`3.11.0`](https://github.com/reactioncommerce/api-migrations/tree/v3.11.0)                           |
+| [development-platform][10] | [`3.11.1`](https://github.com/mailchimp-open-commerce/development-platform/tree/v3.11.1)            |
+| [api-server][10]                      | [`3.11.1`](https://github.com/mailchimp-open-commerce/api-server/tree/v3.11.1)                                 |
+| [hydra][12]                | [`3.0.0`](https://github.com/mailchimp-open-commerce/hydra/tree/v3.0.0)                           |
+| [identity][17]             | [`3.3.0`](https://github.com/mailchimp-open-commerce/identity/tree/v3.3.0)                        |
+| [example-storefront][13]            | [`4.0.0`](https://github.com/mailchimp-open-commerce/example-storefront/tree/v4.0.0)                       |
+| [admin (beta)][19]         | [`3.0.0-beta.12`](https://github.com/mailchimp-open-commerce/admin/tree/v3.0.0-beta.12)             |
+| [api-migrations][20]                | [`3.11.0`](https://github.com/mailchimp-open-commerce/api-migrations/tree/v3.11.0)                           |
 
 ### Developer Certificate of Origin
-We use the [Developer Certificate of Origin (DCO)](https://developercertificate.org/) in lieu of a Contributor License Agreement for all contributions to Reaction Commerce open source projects. We request that contributors agree to the terms of the DCO and indicate that agreement by signing-off all commits made to Reaction Commerce projects by adding a line with your name and email address to every Git commit message contributed:
+We use the [Developer Certificate of Origin (DCO)](https://developercertificate.org/) in lieu of a Contributor License Agreement for all contributions to Mailchimp Open Commerce open source projects. We request that contributors agree to the terms of the DCO and indicate that agreement by signing-off all commits made to Mailchimp Open Commerce projects by adding a line with your name and email address to every Git commit message contributed:
 ```
 Signed-off-by: Jane Doe <jane.doe@example.com>
 ```
@@ -285,17 +285,17 @@ Copyright © [GNU General Public License v3.0](./LICENSE.md)
 [5]: https://git-scm.com/ "Git"
 [6]: https://github.com/ "GitHub"
 [7]: https://github.com/settings/keys "GitHub SSH Keys"
-[8]: https://github.com/reactioncommerce/reaction-platform "Reaction Platform"
+[8]: https://github.com/mailchimp-open-commerce/platform "Mailchimp Open Commerce Platform"
 [9]: https://github.com/graphcool/graphql-playground "GraphQL Playground"
-[10]: https://github.com/reactioncommerce/reaction "Reaction API"
+[10]: https://github.com/mailchimp-open-commerce/api-server "Mailchimp Open Commerce API"
 [11]: https://github.com/ory/hydra "ORY Hydra"
-[12]: https://github.com/reactioncommerce/reaction-hydra "Reaction Hydra"
-[13]: https://github.com/reactioncommerce/example-storefront "Example Storefront"
-[14]: https://docs.reactioncommerce.com "Reaction Documentation"
-[15]: https://github.com/reactioncommerce/example-storefront/tree/master/docs "Example Storefront docs"
-[16]: https://github.com/reactioncommerce/reaction-hydra/blob/master/README.md "Reaction Hydra Readme"
-[17]: https://github.com/reactioncommerce/reaction-identity "Reaction Identity"
-[18]: https://github.com/reactioncommerce/reaction-identity/blob/trunk/README.md "Reaction Identity Readme"
-[19]: https://github.com/reactioncommerce/reaction-admin "Reaction Admin"
-[20]: https://github.com/reactioncommerce/reaction-admin/blob/trunk/README.md "Reaction Admin Readme"
-[20]: https://github.com/reactioncommerce/api-migrations "API Migrations"
+[12]: https://github.com/mailchimp-open-commerce/hydra "Mailchimp Open Commerce Hydra"
+[13]: https://github.com/mailchimp-open-commerce/example-storefront "Example Storefront"
+[14]: https://docs.mailchimp-open-commerce.com "Mailchimp Open Commerce Documentation"
+[15]: https://github.com/mailchimp-open-commerce/example-storefront/tree/master/docs "Example Storefront docs"
+[16]: https://github.com/mailchimp-open-commerce/hydra/blob/master/README.md "Mailchimp Open Commerce Hydra Readme"
+[17]: https://github.com/mailchimp-open-commerce/identity "Mailchimp Open Commerce Identity"
+[18]: https://github.com/mailchimp-open-commerce/identity/blob/trunk/README.md "Mailchimp Open Commerce Identity Readme"
+[19]: https://github.com/mailchimp-open-commerce/admin "Mailchimp Open Commerce Admin"
+[20]: https://github.com/mailchimp-open-commerce/admin/blob/trunk/README.md "Mailchimp Open Commerce Admin Readme"
+[20]: https://github.com/mailchimp-open-commerce/api-migrations "API Migrations"
