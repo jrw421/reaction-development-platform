@@ -2,6 +2,8 @@
 
 Following Mailchimp's acquisition of Reaction the organization is being renamed to Mailchimp Open Commerce (or MOC). Changes in this release reflect the naming updates.
 
+This release is coordinated with the release of [Reaction v4.0.0](https://github.com/mailchimp-open-commerce/api-server/releases/tag/v4.0.0) and [Reaction Admin v3.0.0-beta.12](https://github.com/mailchimp-open-commerce/admin/releases/tag/v4.0.0) to keep the `development-platform` up-to-date with the latest version of all our development platform projects.
+
 # v3.11.1
 
 This release is coordinated with the release of [Reaction v3.11.1](https://github.com/reactioncommerce/reaction/releases/tag/v3.11.1) and [Reaction Admin v3.0.0-beta.12](https://github.com/reactioncommerce/reaction-admin/releases/tag/v3.0.0-beta.12) to keep the `reaction-development-platform` up-to-date with the latest version of all our development platform projects.
